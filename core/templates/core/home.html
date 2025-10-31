@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt" class="scroll-smooth">
 <head>
@@ -154,7 +155,8 @@
                 <div class="flex items-center">
                     <div class="flex-shrink-0 flex items-center">
                         <div class="w-12 h-15  from-primary to-accent rounded-lg flex items-center justify-center mr-3">
-                            <img src="img/logo.png" alt="logotipo">
+                            
+                            <img src="{% static 'img/logo.png' %}" alt="Logo" width="150">
                         </div>
                         <span class="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Neway AQADC</span>
                     </div>
@@ -579,7 +581,7 @@
                 <div class="lg:col-span-2">
                     <div class="flex items-center mb-6">
                         <div class="w-12 h-12 from-primary to-accent rounded-lg flex items-center justify-center mr-3">
-                            <img src="logo.png" alt="logotipo">
+                            <img src="{% static 'img/logo.png' %}" alt="Logo" width="150">
                         </div>
                         <span class="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Neway AQDC</span>
                     </div>
