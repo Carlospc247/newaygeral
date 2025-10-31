@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-ifb+xun*6=-l(4$jdsd=nup^$rm#9exb2m=*6tb$dbksryds*$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
