@@ -1,0 +1,890 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWAY  AQADC - Soluções Empresariais Integradas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#4F46E5',
+                        accent: '#06B6D4',
+                        success: '#10B981',
+                        warning: '#F59E0B',
+                        danger: '#EF4444'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', '-apple-system', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .service-gradient-1 {
+            background: linear-gradient(135deg, #5D5CDE 0%, #4F46E5 100%);
+        }
+        
+        .service-gradient-2 {
+            background: linear-gradient(135deg, #06B6D4 0%, #0891B2 100%);
+        }
+        
+        .service-gradient-3 {
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+        }
+        
+        .service-gradient-4 {
+            background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+        }
+        
+        .service-gradient-5 {
+            background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+        }
+        
+        .floating-animation {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .service-card {
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .service-card:hover::before {
+            left: 100%;
+        }
+        
+        .nav-link {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #5D5CDE;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .stat-counter {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #5D5CDE, #06B6D4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .dark .glass-effect {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="font-sans bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <div class="w-12 h-15  from-primary to-accent rounded-lg flex items-center justify-center mr-3">
+                            
+                            <img src="{% static 'img/logo.png' %}" alt="Logo" width="150">
+                        </div>
+                        <span class="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Neway AQADC</span>
+                    </div>
+                </div>
+                
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="nav-link text-gray-700 dark:text-gray-300 hover:text-primary px-3 py-2 text-sm font-medium">Início</a>
+                        <a href="#services" class="nav-link text-gray-700 dark:text-gray-300 hover:text-primary px-3 py-2 text-sm font-medium">Serviços</a>
+                        <a href="#about" class="nav-link text-gray-700 dark:text-gray-300 hover:text-primary px-3 py-2 text-sm font-medium">Sobre Nós</a>
+                        <a href="#stats" class="nav-link text-gray-700 dark:text-gray-300 hover:text-primary px-3 py-2 text-sm font-medium">Números</a>
+                        <a href="#contact" class="nav-link text-gray-700 dark:text-gray-300 hover:text-primary px-3 py-2 text-sm font-medium">Contacto</a>
+                    </div>
+                </div>
+                
+                <button id="mobile-menu-button" class="md:hidden">
+                    <i class="fas fa-bars text-gray-700 dark:text-gray-300"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#home" class="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary">Início</a>
+                <a href="#services" class="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary">Serviços</a>
+                <a href="#about" class="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary">Sobre Nós</a>
+                <a href="#stats" class="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary">Números</a>
+                <a href="#contact" class="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 gradient-bg"></div>
+        <div class="absolute inset-0 bg-black/40"></div>
+        
+        <!-- Floating shapes -->
+        <div class="absolute top-20 left-10 w-24 h-24 bg-white/10 rounded-full floating-animation"></div>
+        <div class="absolute top-40 right-20 w-20 h-20 bg-accent/20 rounded-full floating-animation" style="animation-delay: -2s;"></div>
+        <div class="absolute bottom-40 left-20 w-28 h-28 bg-primary/20 rounded-full floating-animation" style="animation-delay: -4s;"></div>
+        <div class="absolute top-60 right-40 w-16 h-16 bg-success/20 rounded-full floating-animation" style="animation-delay: -1s;"></div>
+        
+        <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-6 fade-in">
+                <span class="block">Neway</span>
+                <span class="block bg-gradient-to-r from-accent to-white bg-clip-text text-transparent">AQDC</span>
+            </h1>
+            <p class="text-xl md:text-2xl lg:text-3xl text-gray-200 mb-8 fade-in font-light leading-relaxed" style="animation-delay: 0.2s;">
+                Soluções empresariais integradas para impulsionar o seu negócio em <strong>múltiplas frentes</strong>
+            </p>
+            <p class="text-lg md:text-xl text-gray-300 mb-12 fade-in max-w-3xl mx-auto" style="animation-delay: 0.4s;">
+                Da formação tecnológica aos cuidados de saúde, oferecemos expertise especializada em cada área do seu negócio
+            </p>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center fade-in" style="animation-delay: 0.6s;">
+                <button onclick="scrollToSection('services')" class="bg-primary hover:bg-secondary text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-xl">
+                    Explorar Serviços
+                </button>
+                <button onclick="scrollToSection('about')" class="glass-effect text-white hover:bg-white/20 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300">
+                    Conhecer a Empresa
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gray-50 dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20 fade-in">
+                <h2 class="text-4xl md:text-6xl font-bold mb-6">Áreas de Especialização</h2>
+                <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-400 max-w-4xl mx-auto">
+                    Escolha a área que melhor se adequa às suas necessidades e aceda ao nosso portal especializado
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Formação de Programação -->
+                <div class="service-card service-gradient-1 rounded-3xl p-8 text-white cursor-pointer fade-in" onclick="navigateToService('formacao')">
+                    <div class="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-code text-4xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Formação de Programação</h3>
+                    <p class="text-white/90 mb-6 text-lg">
+                        Cursos especializados em Django, Python, desenvolvimento web e tecnologias modernas. Formação prática com projetos reais.
+                    </p>
+                    <ul class="space-y-2 mb-8 text-white/80">
+                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Django & Python</li>
+                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Desenvolvimento Web</li>
+                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> APIs & Microserviços</li>
+                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Certificação Incluída</li>
+                    </ul>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold">Aceder ao  Portal</span>
+                        <i class="fas fa-arrow-right text-2xl"></i>
+                    </div>
+                </div>
+                
+                <!-- Consultoria de TI -->
+                <div class="service-card service-gradient-2 rounded-3xl p-8 text-white cursor-pointer fade-in" onclick="navigateToService('consultoria')" style="animation-delay: 0.1s;">
+                    <div class="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-laptop-code text-4xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Consultoria de TI</h3>
+                    <p class="text-white/90 mb-6 text-lg">
+                        Soluções tecnológicas estratégicas, auditoria de sistemas, migração cloud e transformação digital empresarial.
+                    </p>
+                    <ul class="space-y-2 mb-8 text-white/80">
+                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Auditoria de Sistemas</li>
+                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Migração Cloud</li>
+                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Cibersegurança</li>
+                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Infraestrutura TI</li>
+                    </ul>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold">Aceder Portal</span>
+                        <i class="fas fa-arrow-right text-2xl"></i>
+                    </div>
+                </div>
+                
+                <!-- Marketing Digital -->
+                <div class="service-card service-gradient-3 rounded-3xl p-8 text-white cursor-pointer fade-in" onclick="navigateToService('marketing')" style="animation-delay: 0.2s;">
+                    <div class="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-bullhorn text-4xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Marketing Digital</h3>
+                    <p class="text-white/90 mb-6 text-lg">
+                        Estratégias completas de marketing digital, SEO, redes sociais, campanhas publicitárias e growth hacking.
+                    </p>
+                    <ul class="space-y-2 mb-8 text-white/80">
+                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> SEO & SEM</li>
+                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Redes Sociais</li>
+                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Google Ads</li>
+                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Analytics & ROI</li>
+                    </ul>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold">Aceder Portal</span>
+                        <i class="fas fa-arrow-right text-2xl"></i>
+                    </div>
+                </div>
+                
+                <!-- Saúde - Redes de Farmácias -->
+                <div class="service-card service-gradient-4 rounded-3xl p-8 text-white cursor-pointer fade-in" onclick="navigateToService('saude')" style="animation-delay: 0.3s;">
+                    <div class="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-pills text-4xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Saúde - Redes de Farmácias</h3>
+                    <p class="text-white/90 mb-6 text-lg">
+                        Gestão completa de redes farmacêuticas, sistemas de inventário, prescrições digitais e compliance regulamentar.
+                    </p>
+                    <ul class="space-y-2 mb-8 text-white/80">
+                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Gestão de Inventário</li>
+                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> POS Farmacêutico</li>
+                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Receitas Digitais</li>
+                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Compliance Regulamentar</li>
+                    </ul>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold">Aceder Portal</span>
+                        <i class="fas fa-arrow-right text-2xl"></i>
+                    </div>
+                </div>
+                
+                <!-- Equipamentos Hospitalares -->
+                <div class="service-card service-gradient-5 rounded-3xl p-8 text-white cursor-pointer fade-in" onclick="navigateToService('equipamentos')" style="animation-delay: 0.4s;">
+                    <div class="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-heartbeat text-4xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Equipamentos Hospitalares</h3>
+                    <p class="text-white/90 mb-6 text-lg">
+                        Fornecimento, manutenção e gestão de equipamentos médicos hospitalares com tecnologia de ponta e suporte 24/7.
+                    </p>
+                    <ul class="space-y-2 mb-8 text-white/80">
+                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Equipamentos Médicos</li>
+                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Manutenção Preventiva</li>
+                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Suporte 24/7</li>
+                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Certificações ISO</li>
+                    </ul>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold">Aceder Portal</span>
+                        <i class="fas fa-arrow-right text-2xl"></i>
+                    </div>
+                </div>
+                
+                <!-- Soluções Personalizadas -->
+                <div class="service-card bg-gradient-to-br from-gray-600 to-gray-800 rounded-3xl p-8 text-white cursor-pointer fade-in" onclick="scrollToSection('contact')" style="animation-delay: 0.5s;">
+                    <div class="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-cogs text-4xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Soluções Personalizadas</h3>
+                    <p class="text-white/90 mb-6 text-lg">
+                        Precisa de uma solução específica? Criamos sistemas e estratégias à medida das suas necessidades únicas.
+                    </p>
+                    <ul class="space-y-2 mb-8 text-white/80">
+                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Análise de Necessidades</li>
+                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Desenvolvimento à Medida</li>
+                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Integração Completa</li>
+                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Suporte Contínuo</li>
+                    </ul>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold">Falar Connosco</span>
+                        <i class="fas fa-comments text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="fade-in">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">Quem Somos</h2>
+                    <p class="text-xl text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
+                        A <strong>NEWAY AQADC</strong> é mais do que uma empresa de tecnologia. Somos um ecossistema completo de soluções empresariais que abrange desde a formação tecnológica até aos cuidados de saúde.
+                    </p>
+                    <p class="text-lg text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
+                        Com mais de <strong>3 anos de experiência</strong>, desenvolvemos expertise em múltiplas áreas, permitindo-nos oferecer soluções integradas e personalizadas para empresas de todos os tamanhos.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                                <i class="fas fa-rocket text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg">Inovação Constante</h4>
+                                <p class="text-gray-600 dark:text-gray-400">Sempre na vanguarda das tecnologias emergentes</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center">
+                                <i class="fas fa-users text-accent text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg">Equipa Multidisciplinar</h4>
+                                <p class="text-gray-600 dark:text-gray-400">Especialistas em cada área de atuação</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-success/10 rounded-full flex items-center justify-center">
+                                <i class="fas fa-shield-alt text-success text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg">Qualidade Garantida</h4>
+                                <p class="text-gray-600 dark:text-gray-400">Certificações e padrões internacionais</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fade-in" style="animation-delay: 0.2s;">
+                    <div class="relative">
+                        <div class="bg-gradient-to-br from-primary to-accent rounded-3xl p-8 text-white">
+                            <h3 class="text-2xl font-bold mb-6">A Nossa Missão</h3>
+                            <p class="text-white/90 mb-6 text-lg leading-relaxed">
+                                Democratizar o acesso a soluções tecnológicas de excelência, proporcionando ferramentas e conhecimentos que impulsionam o crescimento sustentável dos nossos clientes.
+                            </p>
+                            
+                            <div class="grid grid-cols-2 gap-4 mt-8">
+                                <div class="bg-white/10 rounded-xl p-4 text-center">
+                                    <i class="fas fa-globe text-3xl mb-2"></i>
+                                    <p class="font-semibold">Global</p>
+                                    <p class="text-sm opacity-80">Alcance Internacional</p>
+                                </div>
+                                <div class="bg-white/10 rounded-xl p-4 text-center">
+                                    <i class="fas fa-award text-3xl mb-2"></i>
+                                    <p class="font-semibold">Excelência</p>
+                                    <p class="text-sm opacity-80">Padrões Elevados</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Floating elements -->
+                        <div class="absolute -top-4 -right-4 w-24 h-24 bg-warning/20 rounded-full floating-animation"></div>
+                        <div class="absolute -bottom-4 -left-4 w-20 h-20 bg-danger/20 rounded-full floating-animation" style="animation-delay: -2s;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section id="stats" class="py-20 bg-gray-900 text-white parallax-bg relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Números que Falam por Si</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Mais de uma década criando soluções que transformam negócios e vidas
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center fade-in">
+                    <div class="stat-counter" data-target="3">0</div>
+                    <p class="text-xl font-semibold mb-2">Anos de Experiência</p>
+                    <p class="text-gray-400">Construindo soluções desde 2009</p>
+                </div>
+                
+                <div class="text-center fade-in" style="animation-delay: 0.1s;">
+                    <div class="stat-counter" data-target="500">0</div>
+                    <p class="text-xl font-semibold mb-2">Projetos Concluídos</p>
+                    <p class="text-gray-400">Em múltiplas áreas de especialização</p>
+                </div>
+                
+                <div class="text-center fade-in" style="animation-delay: 0.2s;">
+                    <div class="stat-counter" data-target="250">0</div>
+                    <p class="text-xl font-semibold mb-2">Clientes Satisfeitos</p>
+                    <p class="text-gray-400">Desde startups a multinacionais</p>
+                </div>
+                
+                <div class="text-center fade-in" style="animation-delay: 0.3s;">
+                    <div class="stat-counter" data-target="50">0</div>
+                    <p class="text-xl font-semibold mb-2">Colaboradores</p>
+                    <p class="text-gray-400">Especialistas multidisciplinares</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50 dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Pronto para Começar?</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                    Entre em contacto connosco e descubra como podemos impulsionar o seu negócio
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                <!-- Contact Info -->
+                <div class="lg:col-span-1 space-y-8 fade-in">
+                    <div class="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-lg">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                                <i class="fas fa-map-marker-alt text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg">Sede Principal</h3>
+                                <p class="text-gray-600 dark:text-gray-400">Rua Sacadura Cabral, S/N<br>1000-001 Malanje, Angola</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-lg">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <div class="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center">
+                                <i class="fas fa-phone text-accent"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg">Contactos</h3>
+                                <p class="text-gray-600 dark:text-gray-400">+244 973 999 991<br>info@newayaqadc.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-lg">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <div class="w-12 h-12 bg-success/10 rounded-full flex items-center justify-center">
+                                <i class="fas fa-clock text-success"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg">Horário</h3>
+                                <p class="text-gray-600 dark:text-gray-400">Seg-Sex: 9h-18h<br>Sáb: 9h-13h</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="lg:col-span-2 fade-in" style="animation-delay: 0.2s;">
+                    <div class="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-lg">
+                        <form class="space-y-6" onsubmit="handleContactForm(event)">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <input type="text" id="name" required class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white" placeholder="O seu nome">
+                                </div>
+                                <div>
+                                    <input type="email" id="email" required class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white" placeholder="O seu email">
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <input type="text" id="company" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white" placeholder="Empresa (opcional)">
+                                </div>
+                                <div>
+                                    <select id="service" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white">
+                                        <option value="">Área de interesse</option>
+                                        <option value="formacao">Formação de Programação</option>
+                                        <option value="consultoria">Consultoria de TI</option>
+                                        <option value="marketing">Marketing Digital</option>
+                                        <option value="saude">Saúde - Redes de Farmácias</option>
+                                        <option value="equipamentos">Equipamentos Hospitalares</option>
+                                        <option value="personalizada">Solução Personalizada</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <textarea id="message" rows="4" required class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white" placeholder="Descreva o seu projeto ou necessidade"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-gradient-to-r from-primary to-accent text-white px-6 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-xl">
+                                Enviar Mensagem
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="lg:col-span-2">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 from-primary to-accent rounded-lg flex items-center justify-center mr-3">
+                            <img src="{% static 'img/logo.png' %}" alt="Logo" width="150">
+                        </div>
+                        <span class="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Neway AQDC</span>
+                    </div>
+                    <p class="text-gray-400 mb-6 max-w-md">
+                        Transformando negócios através de soluções integradas em tecnologia, saúde e marketing digital. Mais de 3 anos de inovação e excelência.
+                    </p>
+                    
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Portais Especializados</h3>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="#" onclick="navigateToService('formacao')" class="hover:text-white transition-colors">Formação Programação</a></li>
+                        <li><a href="#" onclick="navigateToService('consultoria')" class="hover:text-white transition-colors">Consultoria TI</a></li>
+                        <li><a href="#" onclick="navigateToService('marketing')" class="hover:text-white transition-colors">Marketing Digital</a></li>
+                        <li><a href="#" onclick="navigateToService('saude')" class="hover:text-white transition-colors">Saúde & Farmácias</a></li>
+                        <li><a href="#" onclick="navigateToService('equipamentos')" class="hover:text-white transition-colors">Equipamentos Hospitalares</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Contactos</h3>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2"></i>
+                            <span>geral@newayaqadc.com</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-2"></i>
+                            <span>+244 973 999 991</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            <span>Luanda, Malanje</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Neway Aqadc (SU), LDA. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dark mode detection
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', () => {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Navigation links smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    // Close mobile menu if open
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+
+        // Service navigation
+        function navigateToService(serviceType) {
+            // URLs dos portais especializados (para implementar)
+            const serviceUrls = {
+                formacao: '/formacao-programacao',
+                consultoria: '/consultoria-ti', 
+                marketing: '/marketing-digital',
+                saude: '/saude-farmacias',
+                equipamentos: '/equipamentos-hospitalares'
+            };
+            
+            // Simular navegação (implementar redirecionamento real)
+            showServiceModal(serviceType);
+        }
+
+        // Modal de confirmação de navegação
+        function showServiceModal(serviceType) {
+            const serviceNames = {
+                formacao: 'Portal de Formação de Programação',
+                consultoria: 'Portal de Consultoria TI',
+                marketing: 'Portal de Marketing Digital', 
+                saude: 'Portal de Saúde e Farmácias',
+                equipamentos: 'Portal de Equipamentos Hospitalares'
+            };
+            
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black/50 flex items-center justify-center z-50';
+            modal.innerHTML = `
+                <div class="bg-white dark:bg-gray-900 rounded-2xl p-8 max-w-md w-full mx-4">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-external-link-alt text-2xl text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Redirecionamento</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6">
+                            Será redirecionado para o ${serviceNames[serviceType]} especializado.
+                        </p>
+                        <div class="flex space-x-4">
+                            <button onclick="this.closest('.fixed').remove()" class="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                Cancelar
+                            </button>
+                            <button onclick="window.open('#', '_blank'); this.closest('.fixed').remove()" class="flex-1 px-4 py-2 bg-primary text-white rounded-lg hover:bg-secondary transition-colors">
+                                Continuar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Stats counter animation
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 100;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target + '+';
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current) + '+';
+                }
+            }, 20);
+        }
+
+        // Trigger stats animation when section is visible
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counters = entry.target.querySelectorAll('.stat-counter');
+                    counters.forEach(counter => {
+                        const target = parseInt(counter.getAttribute('data-target'));
+                        animateCounter(counter, target);
+                    });
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        });
+
+        const statsSection = document.getElementById('stats');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        // Contact form
+        function handleContactForm(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const company = document.getElementById('company').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
+            
+            const button = event.target.querySelector('button[type="submit"]');
+            const originalText = button.textContent;
+            button.textContent = 'A enviar...';
+            button.disabled = true;
+            
+            // Simulate form submission
+            setTimeout(() => {
+                button.textContent = '✅ Mensagem Enviada!';
+                button.classList.remove('bg-gradient-to-r', 'from-primary', 'to-accent');
+                button.classList.add('bg-green-500');
+                
+                // Show success notification
+                showSuccessNotification(name, service);
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.disabled = false;
+                    button.classList.remove('bg-green-500');
+                    button.classList.add('bg-gradient-to-r', 'from-primary', 'to-accent');
+                    event.target.reset();
+                }, 3000);
+            }, 1500);
+        }
+
+        // Success notification
+        function showSuccessNotification(name, service) {
+            const serviceNames = {
+                formacao: 'Formação de Programação',
+                consultoria: 'Consultoria TI',
+                marketing: 'Marketing Digital',
+                saude: 'Saúde e Farmácias',
+                equipamentos: 'Equipamentos Hospitalares',
+                personalizada: 'Solução Personalizada'
+            };
+            
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-20 right-4 bg-green-500 text-white px-6 py-4 rounded-lg shadow-lg z-50 transform transition-all duration-300 translate-x-full max-w-sm';
+            notification.innerHTML = `
+                <div class="flex items-start space-x-3">
+                    <i class="fas fa-check-circle text-xl mt-1"></i>
+                    <div>
+                        <h4 class="font-semibold">Mensagem Enviada!</h4>
+                        <p class="text-sm opacity-90">Obrigado ${name}! A nossa equipa de ${serviceNames[service] || 'especialistas'} entrará em contacto em breve.</p>
+                    </div>
+                    <button onclick="this.closest('.fixed').remove()" class="ml-2 text-white hover:text-gray-200">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Animate in
+            setTimeout(() => {
+                notification.classList.remove('translate-x-full');
+                notification.classList.add('translate-x-0');
+            }, 100);
+            
+            // Auto remove after 6 seconds
+            setTimeout(() => {
+                if (notification.parentElement) {
+                    notification.classList.add('translate-x-full');
+                    setTimeout(() => {
+                        if (notification.parentElement) {
+                            notification.remove();
+                        }
+                    }, 300);
+                }
+            }, 6000);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Trigger initial fade-in animations
+            setTimeout(() => {
+                document.querySelectorAll('.fade-in').forEach(el => {
+                    if (el.getBoundingClientRect().top < window.innerHeight) {
+                        el.classList.add('visible');
+                    }
+                });
+            }, 100);
+        });
+
+        // Close modals on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const modals = document.querySelectorAll('.fixed.inset-0');
+                modals.forEach(modal => modal.remove());
+            }
+        });
+    </script>
+</body>
+</html>

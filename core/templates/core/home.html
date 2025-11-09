@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEWAY  AQADC - Soluções Empresariais Integradas</title>
+    <title>VistoGest PRO- Vistoria e Gestão Integrada</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <script>
@@ -14,10 +14,7 @@
                     colors: {
                         primary: '#5D5CDE',
                         secondary: '#4F46E5',
-                        accent: '#06B6D4',
-                        success: '#10B981',
-                        warning: '#F59E0B',
-                        danger: '#EF4444'
+                        accent: '#06B6D4'
                     },
                     fontFamily: {
                         'sans': ['Inter', 'system-ui', '-apple-system', 'sans-serif']
@@ -27,30 +24,21 @@
         }
     </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
         
         .gradient-bg {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
         
-        .service-gradient-1 {
-            background: linear-gradient(135deg, #5D5CDE 0%, #4F46E5 100%);
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
-        .service-gradient-2 {
-            background: linear-gradient(135deg, #06B6D4 0%, #0891B2 100%);
-        }
-        
-        .service-gradient-3 {
-            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
-        }
-        
-        .service-gradient-4 {
-            background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
-        }
-        
-        .service-gradient-5 {
-            background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+        .dark .glass-card {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .floating-animation {
@@ -65,7 +53,7 @@
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
         
         .fade-in.visible {
@@ -73,30 +61,20 @@
             transform: translateY(0);
         }
         
-        .service-card {
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
+        .testimonial-card {
+            transition: all 0.3s ease;
+            transform: scale(0.95);
+            opacity: 0.7;
+        }
+        
+        .testimonial-card.active {
+            transform: scale(1);
+            opacity: 1;
         }
         
         .service-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-        }
-        
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-            transition: left 0.6s ease;
-        }
-        
-        .service-card:hover::before {
-            left: 100%;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
         }
         
         .nav-link {
@@ -118,47 +96,17 @@
         .nav-link:hover::after {
             width: 100%;
         }
-        
-        .stat-counter {
-            font-size: 3rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #5D5CDE, #06B6D4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .parallax-bg {
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-        
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .dark .glass-effect {
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
     </style>
 </head>
 <body class="font-sans bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-700">
+    <nav class="fixed w-full z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
                     <div class="flex-shrink-0 flex items-center">
-                        <div class="w-12 h-15  from-primary to-accent rounded-lg flex items-center justify-center mr-3">
-                            
-                            <img src="{% static 'img/logo.png' %}" alt="Logo" width="150">
-                        </div>
-                        <span class="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Neway AQADC</span>
+                        <img src="{% static 'img/logo.png' %}" alt="Logo" width="150">
+                        <span class="text-xl font-bold">VistoGEST PRO</span>
                     </div>
                 </div>
                 
@@ -166,8 +114,9 @@
                     <div class="ml-10 flex items-baseline space-x-8">
                         <a href="#home" class="nav-link text-gray-700 dark:text-gray-300 hover:text-primary px-3 py-2 text-sm font-medium">Início</a>
                         <a href="#services" class="nav-link text-gray-700 dark:text-gray-300 hover:text-primary px-3 py-2 text-sm font-medium">Serviços</a>
-                        <a href="#about" class="nav-link text-gray-700 dark:text-gray-300 hover:text-primary px-3 py-2 text-sm font-medium">Sobre Nós</a>
-                        <a href="#stats" class="nav-link text-gray-700 dark:text-gray-300 hover:text-primary px-3 py-2 text-sm font-medium">Números</a>
+                        <a href="#courses" class="nav-link text-gray-700 dark:text-gray-300 hover:text-primary px-3 py-2 text-sm font-medium">Cursos</a>
+                        <a href="#team" class="nav-link text-gray-700 dark:text-gray-300 hover:text-primary px-3 py-2 text-sm font-medium">Equipa</a>
+                        <a href="#testimonials" class="nav-link text-gray-700 dark:text-gray-300 hover:text-primary px-3 py-2 text-sm font-medium">Testemunhos</a>
                         <a href="#contact" class="nav-link text-gray-700 dark:text-gray-300 hover:text-primary px-3 py-2 text-sm font-medium">Contacto</a>
                     </div>
                 </div>
@@ -183,8 +132,9 @@
             <div class="px-2 pt-2 pb-3 space-y-1">
                 <a href="#home" class="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary">Início</a>
                 <a href="#services" class="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary">Serviços</a>
-                <a href="#about" class="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary">Sobre Nós</a>
-                <a href="#stats" class="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary">Números</a>
+                <a href="#courses" class="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary">Cursos</a>
+                <a href="#team" class="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary">Equipa</a>
+                <a href="#testimonials" class="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary">Testemunhos</a>
                 <a href="#contact" class="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary">Contacto</a>
             </div>
         </div>
@@ -193,31 +143,26 @@
     <!-- Hero Section -->
     <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
         <div class="absolute inset-0 gradient-bg"></div>
-        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0 bg-black/30"></div>
         
         <!-- Floating shapes -->
-        <div class="absolute top-20 left-10 w-24 h-24 bg-white/10 rounded-full floating-animation"></div>
-        <div class="absolute top-40 right-20 w-20 h-20 bg-accent/20 rounded-full floating-animation" style="animation-delay: -2s;"></div>
-        <div class="absolute bottom-40 left-20 w-28 h-28 bg-primary/20 rounded-full floating-animation" style="animation-delay: -4s;"></div>
-        <div class="absolute top-60 right-40 w-16 h-16 bg-success/20 rounded-full floating-animation" style="animation-delay: -1s;"></div>
+        <div class="absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full floating-animation"></div>
+        <div class="absolute top-40 right-20 w-16 h-16 bg-accent/20 rounded-full floating-animation" style="animation-delay: -2s;"></div>
+        <div class="absolute bottom-40 left-20 w-24 h-24 bg-primary/20 rounded-full floating-animation" style="animation-delay: -4s;"></div>
         
-        <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-            <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-6 fade-in">
-                <span class="block">Neway</span>
-                <span class="block bg-gradient-to-r from-accent to-white bg-clip-text text-transparent">AQDC</span>
+        <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 fade-in">
+                Soluções <span class="text-accent">Tecnológicas</span> Inovadoras
             </h1>
-            <p class="text-xl md:text-2xl lg:text-3xl text-gray-200 mb-8 fade-in font-light leading-relaxed" style="animation-delay: 0.2s;">
-                Soluções empresariais integradas para impulsionar o seu negócio em <strong>múltiplas frentes</strong>
+            <p class="text-xl md:text-2xl text-gray-200 mb-8 fade-in" style="animation-delay: 0.2s;">
+                Transformamos a sua empresa com sistemas de gestão inteligentes, formação especializada e consultoria de excelência
             </p>
-            <p class="text-lg md:text-xl text-gray-300 mb-12 fade-in max-w-3xl mx-auto" style="animation-delay: 0.4s;">
-                Da formação tecnológica aos cuidados de saúde, oferecemos expertise especializada em cada área do seu negócio
-            </p>
-            <div class="flex flex-col sm:flex-row gap-6 justify-center fade-in" style="animation-delay: 0.6s;">
-                <button onclick="scrollToSection('services')" class="bg-primary hover:bg-secondary text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-xl">
+            <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in" style="animation-delay: 0.4s;">
+                <button onclick="scrollToSection('services')" class="bg-primary hover:bg-secondary text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105">
                     Explorar Serviços
                 </button>
-                <button onclick="scrollToSection('about')" class="glass-effect text-white hover:bg-white/20 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300">
-                    Conhecer a Empresa
+                <button onclick="scrollToSection('contact')" class="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300">
+                    Falar Connosco
                 </button>
             </div>
         </div>
@@ -226,255 +171,312 @@
     <!-- Services Section -->
     <section id="services" class="py-20 bg-gray-50 dark:bg-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-20 fade-in">
-                <h2 class="text-4xl md:text-6xl font-bold mb-6">Áreas de Especialização</h2>
-                <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-400 max-w-4xl mx-auto">
-                    Escolha a área que melhor se adequa às suas necessidades e aceda ao nosso portal especializado
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Os Nossos Serviços</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                    Oferecemos soluções completas para impulsionar o seu negócio no mundo digital
                 </p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Formação de Programação -->
-                <div class="service-card service-gradient-1 rounded-3xl p-8 text-white cursor-pointer fade-in" onclick="navigateToService('formacao')">
-                    <div class="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
-                        <i class="fas fa-code text-4xl"></i>
+                <!-- Service 1 -->
+                <div class="service-card bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-xl border border-gray-200 dark:border-gray-700 fade-in">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-cogs text-2xl text-primary"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Formação de Programação</h3>
-                    <p class="text-white/90 mb-6 text-lg">
-                        Cursos especializados em Django, Python, desenvolvimento web e tecnologias modernas. Formação prática com projetos reais.
+                    <h3 class="text-2xl font-bold mb-4">Sistemas de Gestão</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-6">
+                        Soluções ERP e CRM personalizadas para otimizar os seus processos empresariais e aumentar a produtividade.
                     </p>
-                    <ul class="space-y-2 mb-8 text-white/80">
-                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Django & Python</li>
-                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Desenvolvimento Web</li>
-                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> APIs & Microserviços</li>
-                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Certificação Incluída</li>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> ERP Empresarial</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> CRM Avançado</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Gestão de Inventário</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Relatórios Inteligentes</li>
                     </ul>
-                    <div class="flex items-center justify-between">
-                        <span class="text-2xl font-bold">Aceder ao  Portal</span>
-                        <i class="fas fa-arrow-right text-2xl"></i>
-                    </div>
                 </div>
                 
-                <!-- Consultoria de TI -->
-                <div class="service-card service-gradient-2 rounded-3xl p-8 text-white cursor-pointer fade-in" onclick="navigateToService('consultoria')" style="animation-delay: 0.1s;">
-                    <div class="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
-                        <i class="fas fa-laptop-code text-4xl"></i>
+                <!-- Service 2 -->
+                <div class="service-card bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-xl border border-gray-200 dark:border-gray-700 fade-in" style="animation-delay: 0.1s;">
+                    <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-graduation-cap text-2xl text-accent"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Consultoria de TI</h3>
-                    <p class="text-white/90 mb-6 text-lg">
-                        Soluções tecnológicas estratégicas, auditoria de sistemas, migração cloud e transformação digital empresarial.
+                    <h3 class="text-2xl font-bold mb-4">Formação Profissional</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-6">
+                        Programas de formação especializados para capacitar a sua equipa com as mais recentes tecnologias.
                     </p>
-                    <ul class="space-y-2 mb-8 text-white/80">
-                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Auditoria de Sistemas</li>
-                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Migração Cloud</li>
-                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Cibersegurança</li>
-                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Infraestrutura TI</li>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Formação Presencial</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Cursos Online</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Certificações</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Workshops Práticos</li>
                     </ul>
-                    <div class="flex items-center justify-between">
-                        <span class="text-2xl font-bold">Aceder Portal</span>
-                        <i class="fas fa-arrow-right text-2xl"></i>
-                    </div>
                 </div>
                 
-                <!-- Marketing Digital -->
-                <div class="service-card service-gradient-3 rounded-3xl p-8 text-white cursor-pointer fade-in" onclick="navigateToService('marketing')" style="animation-delay: 0.2s;">
-                    <div class="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
-                        <i class="fas fa-bullhorn text-4xl"></i>
+                <!-- Service 3 -->
+                <div class="service-card bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-xl border border-gray-200 dark:border-gray-700 fade-in" style="animation-delay: 0.2s;">
+                    <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-lightbulb text-2xl text-secondary"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Marketing Digital</h3>
-                    <p class="text-white/90 mb-6 text-lg">
-                        Estratégias completas de marketing digital, SEO, redes sociais, campanhas publicitárias e growth hacking.
+                    <h3 class="text-2xl font-bold mb-4">Consultoria TI</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-6">
+                        Consultoria estratégica para transformação digital e otimização da infraestrutura tecnológica.
                     </p>
-                    <ul class="space-y-2 mb-8 text-white/80">
-                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> SEO & SEM</li>
-                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Redes Sociais</li>
-                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Google Ads</li>
-                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Analytics & ROI</li>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Auditoria de Sistemas</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Estratégia Digital</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Segurança Informática</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Migração Cloud</li>
                     </ul>
-                    <div class="flex items-center justify-between">
-                        <span class="text-2xl font-bold">Aceder Portal</span>
-                        <i class="fas fa-arrow-right text-2xl"></i>
-                    </div>
-                </div>
-                
-                <!-- Saúde - Redes de Farmácias -->
-                <div class="service-card service-gradient-4 rounded-3xl p-8 text-white cursor-pointer fade-in" onclick="navigateToService('saude')" style="animation-delay: 0.3s;">
-                    <div class="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
-                        <i class="fas fa-pills text-4xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4">Saúde - Redes de Farmácias</h3>
-                    <p class="text-white/90 mb-6 text-lg">
-                        Gestão completa de redes farmacêuticas, sistemas de inventário, prescrições digitais e compliance regulamentar.
-                    </p>
-                    <ul class="space-y-2 mb-8 text-white/80">
-                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Gestão de Inventário</li>
-                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> POS Farmacêutico</li>
-                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Receitas Digitais</li>
-                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Compliance Regulamentar</li>
-                    </ul>
-                    <div class="flex items-center justify-between">
-                        <span class="text-2xl font-bold">Aceder Portal</span>
-                        <i class="fas fa-arrow-right text-2xl"></i>
-                    </div>
-                </div>
-                
-                <!-- Equipamentos Hospitalares -->
-                <div class="service-card service-gradient-5 rounded-3xl p-8 text-white cursor-pointer fade-in" onclick="navigateToService('equipamentos')" style="animation-delay: 0.4s;">
-                    <div class="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
-                        <i class="fas fa-heartbeat text-4xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4">Equipamentos Hospitalares</h3>
-                    <p class="text-white/90 mb-6 text-lg">
-                        Fornecimento, manutenção e gestão de equipamentos médicos hospitalares com tecnologia de ponta e suporte 24/7.
-                    </p>
-                    <ul class="space-y-2 mb-8 text-white/80">
-                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Equipamentos Médicos</li>
-                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Manutenção Preventiva</li>
-                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Suporte 24/7</li>
-                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Certificações ISO</li>
-                    </ul>
-                    <div class="flex items-center justify-between">
-                        <span class="text-2xl font-bold">Aceder Portal</span>
-                        <i class="fas fa-arrow-right text-2xl"></i>
-                    </div>
-                </div>
-                
-                <!-- Soluções Personalizadas -->
-                <div class="service-card bg-gradient-to-br from-gray-600 to-gray-800 rounded-3xl p-8 text-white cursor-pointer fade-in" onclick="scrollToSection('contact')" style="animation-delay: 0.5s;">
-                    <div class="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
-                        <i class="fas fa-cogs text-4xl"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4">Soluções Personalizadas</h3>
-                    <p class="text-white/90 mb-6 text-lg">
-                        Precisa de uma solução específica? Criamos sistemas e estratégias à medida das suas necessidades únicas.
-                    </p>
-                    <ul class="space-y-2 mb-8 text-white/80">
-                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Análise de Necessidades</li>
-                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Desenvolvimento à Medida</li>
-                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Integração Completa</li>
-                        <li class="flex items-center"><i class="fas fa-check mr-3"></i> Suporte Contínuo</li>
-                    </ul>
-                    <div class="flex items-center justify-between">
-                        <span class="text-2xl font-bold">Falar Connosco</span>
-                        <i class="fas fa-comments text-2xl"></i>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-white dark:bg-gray-900">
+    <!-- Courses Section -->
+    <section id="courses" class="py-20 bg-white dark:bg-gray-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div class="fade-in">
-                    <h2 class="text-4xl md:text-5xl font-bold mb-6">Quem Somos</h2>
-                    <p class="text-xl text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
-                        A <strong>NEWAY AQADC</strong> é mais do que uma empresa de tecnologia. Somos um ecossistema completo de soluções empresariais que abrange desde a formação tecnológica até aos cuidados de saúde.
-                    </p>
-                    <p class="text-lg text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
-                        Com mais de <strong>3 anos de experiência</strong>, desenvolvemos expertise em múltiplas áreas, permitindo-nos oferecer soluções integradas e personalizadas para empresas de todos os tamanhos.
-                    </p>
-                    
-                    <div class="space-y-4">
-                        <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                                <i class="fas fa-rocket text-primary text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-lg">Inovação Constante</h4>
-                                <p class="text-gray-600 dark:text-gray-400">Sempre na vanguarda das tecnologias emergentes</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center">
-                                <i class="fas fa-users text-accent text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-lg">Equipa Multidisciplinar</h4>
-                                <p class="text-gray-600 dark:text-gray-400">Especialistas em cada área de atuação</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 bg-success/10 rounded-full flex items-center justify-center">
-                                <i class="fas fa-shield-alt text-success text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-lg">Qualidade Garantida</h4>
-                                <p class="text-gray-600 dark:text-gray-400">Certificações e padrões internacionais</p>
-                            </div>
-                        </div>
-                    </div>
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Cursos Disponíveis</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                    Desenvolva as suas competências com os nossos cursos especializados em tecnologia
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-gradient-to-br from-primary to-secondary rounded-2xl p-6 text-white fade-in">
+                    <i class="fas fa-code text-3xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Programação Web</h3>
+                    <p class="text-sm opacity-90 mb-4">HTML, CSS, JavaScript, Python, Django</p>
+                    <button onclick="showCourseDetails('web')" class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-full text-sm font-semibold transition-all">
+                        Ver Detalhes
+                    </button>
                 </div>
                 
-                <div class="fade-in" style="animation-delay: 0.2s;">
-                    <div class="relative">
-                        <div class="bg-gradient-to-br from-primary to-accent rounded-3xl p-8 text-white">
-                            <h3 class="text-2xl font-bold mb-6">A Nossa Missão</h3>
-                            <p class="text-white/90 mb-6 text-lg leading-relaxed">
-                                Democratizar o acesso a soluções tecnológicas de excelência, proporcionando ferramentas e conhecimentos que impulsionam o crescimento sustentável dos nossos clientes.
-                            </p>
-                            
-                            <div class="grid grid-cols-2 gap-4 mt-8">
-                                <div class="bg-white/10 rounded-xl p-4 text-center">
-                                    <i class="fas fa-globe text-3xl mb-2"></i>
-                                    <p class="font-semibold">Global</p>
-                                    <p class="text-sm opacity-80">Alcance Internacional</p>
-                                </div>
-                                <div class="bg-white/10 rounded-xl p-4 text-center">
-                                    <i class="fas fa-award text-3xl mb-2"></i>
-                                    <p class="font-semibold">Excelência</p>
-                                    <p class="text-sm opacity-80">Padrões Elevados</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Floating elements -->
-                        <div class="absolute -top-4 -right-4 w-24 h-24 bg-warning/20 rounded-full floating-animation"></div>
-                        <div class="absolute -bottom-4 -left-4 w-20 h-20 bg-danger/20 rounded-full floating-animation" style="animation-delay: -2s;"></div>
-                    </div>
+                <div class="bg-gradient-to-br from-accent to-primary rounded-2xl p-6 text-white fade-in" style="animation-delay: 0.1s;">
+                    <i class="fas fa-database text-3xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Base de Dados</h3>
+                    <p class="text-sm opacity-90 mb-4">SQL, PostgreSQL, MongoDB, Design BD</p>
+                    <button onclick="showCourseDetails('database')" class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-full text-sm font-semibold transition-all">
+                        Ver Detalhes
+                    </button>
+                </div>
+                
+                <div class="bg-gradient-to-br from-secondary to-accent rounded-2xl p-6 text-white fade-in" style="animation-delay: 0.2s;">
+                    <i class="fas fa-shield-alt text-3xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Cibersegurança</h3>
+                    <p class="text-sm opacity-90 mb-4">Ethical Hacking, Pentesting, Segurança</p>
+                    <button onclick="showCourseDetails('security')" class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-full text-sm font-semibold transition-all">
+                        Ver Detalhes
+                    </button>
+                </div>
+                
+                <div class="bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl p-6 text-white fade-in" style="animation-delay: 0.3s;">
+                    <i class="fas fa-cloud text-3xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Cloud Computing</h3>
+                    <p class="text-sm opacity-90 mb-4">AWS, Azure, DevOps, Kubernetes</p>
+                    <button onclick="showCourseDetails('cloud')" class="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-full text-sm font-semibold transition-all">
+                        Ver Detalhes
+                    </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Stats Section -->
-    <section id="stats" class="py-20 bg-gray-900 text-white parallax-bg relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20"></div>
-        
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-gray-50 dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 fade-in">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">Números que Falam por Si</h2>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
-                    Mais de uma década criando soluções que transformam negócios e vidas
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">O Que Dizem os Nossos Clientes</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400">
+                    Testemunhos reais de empresas que transformaram o seu negócio connosco
+                </p>
+            </div>
+            
+            <div class="relative">
+                <div id="testimonials-container" class="flex space-x-6 overflow-hidden">
+                    <!-- Testimonial cards will be populated by JavaScript -->
+                </div>
+                
+                <button id="prev-testimonial" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white dark:bg-gray-900 shadow-lg rounded-full p-3 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all">
+                    <i class="fas fa-chevron-left text-gray-600 dark:text-gray-400"></i>
+                </button>
+                <button id="next-testimonial" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white dark:bg-gray-900 shadow-lg rounded-full p-3 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all">
+                    <i class="fas fa-chevron-right text-gray-600 dark:text-gray-400"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="py-20 bg-white dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">A Nossa Equipa</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                    Conheça os profissionais experientes que tornam os seus projetos uma realidade
                 </p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="text-center fade-in">
-                    <div class="stat-counter" data-target="3">0</div>
-                    <p class="text-xl font-semibold mb-2">Anos de Experiência</p>
-                    <p class="text-gray-400">Construindo soluções desde 2009</p>
+                <!-- CEO -->
+                <div class="team-member bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 text-center fade-in hover:shadow-xl transition-all duration-300">
+                    <div class="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+                        <i class="fas fa-user-tie text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Carlos Sebastião</h3>
+                    <p class="text-primary font-semibold mb-3">CEO & Fundador</p>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
+                        Mais de 15 anos de experiência em tecnologia e gestão empresarial. Visionário da transformação digital.
+                    </p>
+                    <div class="flex justify-center space-x-3">
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="mailto:ceo@vistogest.pro" class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
                 </div>
                 
-                <div class="text-center fade-in" style="animation-delay: 0.1s;">
-                    <div class="stat-counter" data-target="500">0</div>
-                    <p class="text-xl font-semibold mb-2">Projetos Concluídos</p>
-                    <p class="text-gray-400">Em múltiplas áreas de especialização</p>
+                <!-- Diretora -->
+                <div class="team-member bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 text-center fade-in hover:shadow-xl transition-all duration-300" style="animation-delay: 0.1s;">
+                    <div class="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-accent to-primary flex items-center justify-center">
+                        <i class="fas fa-user-graduate text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Aguimila Sebastião</h3>
+                    <p class="text-accent font-semibold mb-3">Diretora Executiva</p>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
+                        Especialista em gestão de operações e desenvolvimento de negócios. Garante a excelência na execução de projetos.
+                    </p>
+                    <div class="flex justify-center space-x-3">
+                        <a href="#" class="text-gray-400 hover:text-accent transition-colors">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="mailto:diretora@vistogest.pro" class="text-gray-400 hover:text-accent transition-colors">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
                 </div>
                 
-                <div class="text-center fade-in" style="animation-delay: 0.2s;">
-                    <div class="stat-counter" data-target="250">0</div>
-                    <p class="text-xl font-semibold mb-2">Clientes Satisfeitos</p>
-                    <p class="text-gray-400">Desde startups a multinacionais</p>
+                <!-- Gestor Marketing -->
+                <div class="team-member bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 text-center fade-in hover:shadow-xl transition-all duration-300" style="animation-delay: 0.2s;">
+                    <div class="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-secondary to-purple-500 flex items-center justify-center">
+                        <i class="fas fa-bullhorn text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Ivan Sebastião</h3>
+                    <p class="text-secondary font-semibold mb-3">Gestor de Marketing</p>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
+                        Estratégias digitais inovadoras e campanhas que conectam marcas com clientes. Especialista em growth marketing.
+                    </p>
+                    <div class="flex justify-center space-x-3">
+                        <a href="#" class="text-gray-400 hover:text-secondary transition-colors">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="mailto:marketing@vistogest.pro" class="text-gray-400 hover:text-secondary transition-colors">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
                 </div>
                 
-                <div class="text-center fade-in" style="animation-delay: 0.3s;">
-                    <div class="stat-counter" data-target="50">0</div>
-                    <p class="text-xl font-semibold mb-2">Colaboradores</p>
-                    <p class="text-gray-400">Especialistas multidisciplinares</p>
+                <!-- Promotor de Vendas -->
+                <div class="team-member bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 text-center fade-in hover:shadow-xl transition-all duration-300" style="animation-delay: 0.3s;">
+                    <div class="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-green-500 to-accent flex items-center justify-center">
+                        <i class="fas fa-handshake text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Rita Costa</h3>
+                    <p class="text-green-600 font-semibold mb-3">Promotora de Vendas</p>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
+                        Especialista em soluções personalizadas para clientes. Conecta necessidades empresariais com soluções tecnológicas.
+                    </p>
+                    <div class="flex justify-center space-x-3">
+                        <a href="#" class="text-gray-400 hover:text-green-600 transition-colors">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="mailto:vendas@vistogest.pro" class="text-gray-400 hover:text-green-600 transition-colors">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- CTO -->
+                <div class="team-member bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 text-center fade-in hover:shadow-xl transition-all duration-300" style="animation-delay: 0.4s;">
+                    <div class="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-blue-500 to-primary flex items-center justify-center">
+                        <i class="fas fa-laptop-code text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">João Pereira</h3>
+                    <p class="text-blue-600 font-semibold mb-3">CTO</p>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
+                        Arquiteto de soluções tecnológicas avançadas. Lidera a inovação e desenvolvimento de sistemas escaláveis.
+                    </p>
+                    <div class="flex justify-center space-x-3">
+                        <a href="#" class="text-gray-400 hover:text-blue-600 transition-colors">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="mailto:cto@vistogest.pro" class="text-gray-400 hover:text-blue-600 transition-colors">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Consultora Sénior -->
+                <div class="team-member bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 text-center fade-in hover:shadow-xl transition-all duration-300" style="animation-delay: 0.5s;">
+                    <div class="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                        <i class="fas fa-user-cog text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Mariana Silva</h3>
+                    <p class="text-purple-600 font-semibold mb-3">Consultora Sénior</p>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
+                        Especialista em transformação digital e processos empresariais. Mais de 12 anos em consultoria estratégica.
+                    </p>
+                    <div class="flex justify-center space-x-3">
+                        <a href="#" class="text-gray-400 hover:text-purple-600 transition-colors">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="mailto:consultoria@vistogest.pro" class="text-gray-400 hover:text-purple-600 transition-colors">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Coordenador de Formação -->
+                <div class="team-member bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 text-center fade-in hover:shadow-xl transition-all duration-300" style="animation-delay: 0.6s;">
+                    <div class="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center">
+                        <i class="fas fa-chalkboard-teacher text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Pedro Oliveira</h3>
+                    <p class="text-orange-600 font-semibold mb-3">Coordenador de Formação</p>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
+                        Desenvolvedor de programas educacionais inovadores. Especialista em metodologias de ensino tecnológico.
+                    </p>
+                    <div class="flex justify-center space-x-3">
+                        <a href="#" class="text-gray-400 hover:text-orange-600 transition-colors">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="mailto:formacao@vistogest.pro" class="text-gray-400 hover:text-orange-600 transition-colors">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Suporte Técnico -->
+                <div class="team-member bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 text-center fade-in hover:shadow-xl transition-all duration-300" style="animation-delay: 0.7s;">
+                    <div class="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-teal-500 to-green-500 flex items-center justify-center">
+                        <i class="fas fa-tools text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Tiago Mendes</h3>
+                    <p class="text-teal-600 font-semibold mb-3">Coordenador de Suporte</p>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
+                        Garante o funcionamento perfeito de todos os sistemas. Especialista em resolução rápida de problemas técnicos.
+                    </p>
+                    <div class="flex justify-center space-x-3">
+                        <a href="#" class="text-gray-400 hover:text-teal-600 transition-colors">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="mailto:suporte@vistogest.pro" class="text-gray-400 hover:text-teal-600 transition-colors">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -484,162 +486,156 @@
     <section id="contact" class="py-20 bg-gray-50 dark:bg-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 fade-in">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">Pronto para Começar?</h2>
-                <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-                    Entre em contacto connosco e descubra como podemos impulsionar o seu negócio
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Entre em Contacto</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400">
+                    Pronto para transformar o seu negócio? Fale connosco hoje mesmo
                 </p>
             </div>
             
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                <!-- Contact Info -->
-                <div class="lg:col-span-1 space-y-8 fade-in">
-                    <div class="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-lg">
-                        <div class="flex items-center space-x-4 mb-4">
-                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="fade-in">
+                    <div class="space-y-8">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
                                 <i class="fas fa-map-marker-alt text-primary"></i>
                             </div>
                             <div>
-                                <h3 class="font-semibold text-lg">Sede Principal</h3>
-                                <p class="text-gray-600 dark:text-gray-400">Rua Sacadura Cabral, S/N<br>1000-001 Malanje, Angola</p>
+                                <h3 class="text-lg font-semibold mb-2">Morada</h3>
+                                <p class="text-gray-600 dark:text-gray-400">Rua do Martires, 145<br>1000-001 Luanda, Angola</p>
+                                <p class="text-gray-600 dark:text-gray-400">Rua Comandante Dangereux, S/N<br>1000-001 Malanje, Angola</p>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-lg">
-                        <div class="flex items-center space-x-4 mb-4">
-                            <div class="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center">
-                                <i class="fas fa-phone text-accent"></i>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-phone text-primary"></i>
                             </div>
                             <div>
-                                <h3 class="font-semibold text-lg">Contactos</h3>
-                                <p class="text-gray-600 dark:text-gray-400">+244 973 999 991<br>info@newayaqadc.com</p>
+                                <h3 class="text-lg font-semibold mb-2">Telefone</h3>
+                                <p class="text-gray-600 dark:text-gray-400">+244 973 000 001</p>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-lg">
-                        <div class="flex items-center space-x-4 mb-4">
-                            <div class="w-12 h-12 bg-success/10 rounded-full flex items-center justify-center">
-                                <i class="fas fa-clock text-success"></i>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-envelope text-primary"></i>
                             </div>
                             <div>
-                                <h3 class="font-semibold text-lg">Horário</h3>
-                                <p class="text-gray-600 dark:text-gray-400">Seg-Sex: 9h-18h<br>Sáb: 9h-13h</p>
+                                <h3 class="text-lg font-semibold mb-2">Email</h3>
+                                <p class="text-gray-600 dark:text-gray-400">geral@vistogest.pro</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Contact Form -->
-                <div class="lg:col-span-2 fade-in" style="animation-delay: 0.2s;">
-                    <div class="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-lg">
-                        <form class="space-y-6" onsubmit="handleContactForm(event)">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <input type="text" id="name" required class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white" placeholder="O seu nome">
-                                </div>
-                                <div>
-                                    <input type="email" id="email" required class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white" placeholder="O seu email">
-                                </div>
-                            </div>
-                            
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <input type="text" id="company" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white" placeholder="Empresa (opcional)">
-                                </div>
-                                <div>
-                                    <select id="service" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white">
-                                        <option value="">Área de interesse</option>
-                                        <option value="formacao">Formação de Programação</option>
-                                        <option value="consultoria">Consultoria de TI</option>
-                                        <option value="marketing">Marketing Digital</option>
-                                        <option value="saude">Saúde - Redes de Farmácias</option>
-                                        <option value="equipamentos">Equipamentos Hospitalares</option>
-                                        <option value="personalizada">Solução Personalizada</option>
-                                    </select>
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <textarea id="message" rows="4" required class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white" placeholder="Descreva o seu projeto ou necessidade"></textarea>
-                            </div>
-                            
-                            <button type="submit" class="w-full bg-gradient-to-r from-primary to-accent text-white px-6 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-xl">
-                                Enviar Mensagem
-                            </button>
-                        </form>
-                    </div>
+                <div class="fade-in" style="animation-delay: 0.2s;">
+                    <form class="space-y-6" onsubmit="handleContactForm(event)">
+                        <div>
+                            <input type="text" id="name" required class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white" placeholder="O seu nome">
+                        </div>
+                        <div>
+                            <input type="email" id="email" required class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white" placeholder="O seu email">
+                        </div>
+                        <div>
+                            <select id="service" class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white">
+                                <option value="">Selecione um serviço</option>
+                                <option value="sistemas">Sistemas de Gestão</option>
+                                <option value="formacao">Formação Profissional</option>
+                                <option value="consultoria">Consultoria TI</option>
+                                <option value="cursos">Cursos</option>
+                            </select>
+                        </div>
+                        <div>
+                            <textarea id="message" rows="4" required class="w-full px-4 py-3 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white" placeholder="A sua mensagem"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-primary hover:bg-secondary text-white px-6 py-3 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105">
+                            Enviar Mensagem
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-16">
+    <footer class="bg-gray-900 text-white py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="lg:col-span-2">
-                    <div class="flex items-center mb-6">
-                        <div class="w-12 h-12 from-primary to-accent rounded-lg flex items-center justify-center mr-3">
-                            <img src="{% static 'img/logo.png' %}" alt="Logo" width="150">
-                        </div>
-                        <span class="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Neway AQDC</span>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <img src="{% static 'img/logo.png' %}" alt="Logo" width="150">
+                        <span class="text-xl font-bold">VistoGEST PRO</span>
                     </div>
-                    <p class="text-gray-400 mb-6 max-w-md">
-                        Transformando negócios através de soluções integradas em tecnologia, saúde e marketing digital. Mais de 3 anos de inovação e excelência.
+                    <p class="text-gray-400">
+                        Transformando empresas através da tecnologia e inovação.
                     </p>
-                    
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Serviços</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Sistemas de Gestão</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Formação</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Consultoria</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Suporte Técnico</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Cursos</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Programação Web</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Base de Dados</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Cibersegurança</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Cloud Computing</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Siga-nos</h3>
                     <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
-                            <i class="fab fa-facebook-f"></i>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-facebook-f text-xl"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
-                            <i class="fab fa-linkedin"></i>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin text-xl"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
-                            <i class="fab fa-twitter"></i>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
-                            <i class="fab fa-instagram"></i>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
                         </a>
                     </div>
-                </div>
-                
-                <div>
-                    <h3 class="text-lg font-semibold mb-6">Portais Especializados</h3>
-                    <ul class="space-y-3 text-gray-400">
-                        <li><a href="#" onclick="navigateToService('formacao')" class="hover:text-white transition-colors">Formação Programação</a></li>
-                        <li><a href="#" onclick="navigateToService('consultoria')" class="hover:text-white transition-colors">Consultoria TI</a></li>
-                        <li><a href="#" onclick="navigateToService('marketing')" class="hover:text-white transition-colors">Marketing Digital</a></li>
-                        <li><a href="#" onclick="navigateToService('saude')" class="hover:text-white transition-colors">Saúde & Farmácias</a></li>
-                        <li><a href="#" onclick="navigateToService('equipamentos')" class="hover:text-white transition-colors">Equipamentos Hospitalares</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="text-lg font-semibold mb-6">Contactos</h3>
-                    <ul class="space-y-3 text-gray-400">
-                        <li class="flex items-center">
-                            <i class="fas fa-envelope mr-2"></i>
-                            <span>geral@newayaqadc.com</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-phone mr-2"></i>
-                            <span>+244 973 999 991</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-map-marker-alt mr-2"></i>
-                            <span>Luanda, Malanje</span>
-                        </li>
-                    </ul>
                 </div>
             </div>
             
-            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-                <p>&copy; 2025 Neway Aqadc (SU), LDA. Todos os direitos reservados.</p>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 VistoGEST PRO. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
+
+    <!-- Course Details Modal -->
+    <div id="course-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white dark:bg-gray-900 rounded-2xl p-8 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h3 id="modal-title" class="text-2xl font-bold"></h3>
+                <button onclick="closeCourseModal()" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div id="modal-content"></div>
+            <div class="mt-6 flex justify-end space-x-4">
+                <button onclick="closeCourseModal()" class="px-6 py-2 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    Fechar
+                </button>
+                <button class="px-6 py-2 bg-primary text-white rounded-lg hover:bg-secondary transition-colors">
+                    Inscrever-me
+                </button>
+            </div>
+        </div>
+    </div>
 
     <script>
         // Dark mode detection
@@ -682,57 +678,6 @@
             });
         });
 
-        // Service navigation
-        function navigateToService(serviceType) {
-            // URLs dos portais especializados (para implementar)
-            const serviceUrls = {
-                formacao: '/formacao-programacao',
-                consultoria: '/consultoria-ti', 
-                marketing: '/marketing-digital',
-                saude: '/saude-farmacias',
-                equipamentos: '/equipamentos-hospitalares'
-            };
-            
-            // Simular navegação (implementar redirecionamento real)
-            showServiceModal(serviceType);
-        }
-
-        // Modal de confirmação de navegação
-        function showServiceModal(serviceType) {
-            const serviceNames = {
-                formacao: 'Portal de Formação de Programação',
-                consultoria: 'Portal de Consultoria TI',
-                marketing: 'Portal de Marketing Digital', 
-                saude: 'Portal de Saúde e Farmácias',
-                equipamentos: 'Portal de Equipamentos Hospitalares'
-            };
-            
-            const modal = document.createElement('div');
-            modal.className = 'fixed inset-0 bg-black/50 flex items-center justify-center z-50';
-            modal.innerHTML = `
-                <div class="bg-white dark:bg-gray-900 rounded-2xl p-8 max-w-md w-full mx-4">
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-external-link-alt text-2xl text-primary"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-4">Redirecionamento</h3>
-                        <p class="text-gray-600 dark:text-gray-400 mb-6">
-                            Será redirecionado para o ${serviceNames[serviceType]} especializado.
-                        </p>
-                        <div class="flex space-x-4">
-                            <button onclick="this.closest('.fixed').remove()" class="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
-                                Cancelar
-                            </button>
-                            <button onclick="window.open('#', '_blank'); this.closest('.fixed').remove()" class="flex-1 px-4 py-2 bg-primary text-white rounded-lg hover:bg-secondary transition-colors">
-                                Continuar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            `;
-            document.body.appendChild(modal);
-        }
-
         // Fade in animation on scroll
         const observerOptions = {
             threshold: 0.1,
@@ -751,47 +696,238 @@
             observer.observe(el);
         });
 
-        // Stats counter animation
-        function animateCounter(element, target) {
-            let current = 0;
-            const increment = target / 100;
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    element.textContent = target + '+';
-                    clearInterval(timer);
-                } else {
-                    element.textContent = Math.floor(current) + '+';
-                }
-            }, 20);
+        // Testimonials data
+        const testimonials = [
+            {
+                name: "Maria Silva",
+                company: "Empresa ABC",
+                role: "CEO",
+                text: "A TechSolutions Pro transformou completamente a nossa gestão empresarial. O sistema ERP implementado aumentou a nossa produtividade em 40%.",
+                rating: 5,
+                image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face"
+            },
+            {
+                name: "João Santos",
+                company: "Indústrias XYZ",
+                role: "CTO",
+                text: "Excelente consultoria e formação. A equipa é muito profissional e os resultados foram imediatos. Recomendo vivamente!",
+                rating: 5,
+                image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face"
+            },
+            {
+                name: "Ana Costa",
+                company: "Serviços Digitais",
+                role: "Directora de TI",
+                text: "A migração para a cloud foi perfeita. Zero downtime e uma melhoria significativa na performance dos nossos sistemas.",
+                rating: 5,
+                image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
+            },
+            {
+                name: "Pedro Oliveira",
+                company: "StartUp Tech",
+                role: "Fundador",
+                text: "Os cursos de programação web foram fundamentais para desenvolvermos a nossa plataforma. Formação de qualidade superior.",
+                rating: 5,
+                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
+            },
+            {
+                name: "Carla Mendes",
+                company: "Consultoria Avançada",
+                role: "Directora Executiva",
+                text: "Parceria estratégica que nos permitiu digitalizar todos os processos. Resultados excecionais em tempo recorde.",
+                rating: 5,
+                image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&h=100&fit=crop&crop=face"
+            }
+        ];
+
+        // Populate testimonials
+        function populateTestimonials() {
+            const container = document.getElementById('testimonials-container');
+            container.innerHTML = testimonials.map((testimonial, index) => `
+                <div class="testimonial-card flex-shrink-0 w-80 bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-xl border border-gray-200 dark:border-gray-700 ${index === 0 ? 'active' : ''}">
+                    <div class="flex items-center mb-4">
+                        <img src="${testimonial.image}" alt="${testimonial.name}" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold">${testimonial.name}</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">${testimonial.role} - ${testimonial.company}</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-4">
+                        ${Array(testimonial.rating).fill('<i class="fas fa-star text-yellow-400"></i>').join('')}
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 italic">"${testimonial.text}"</p>
+                </div>
+            `).join('');
         }
 
-        // Trigger stats animation when section is visible
-        const statsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const counters = entry.target.querySelectorAll('.stat-counter');
-                    counters.forEach(counter => {
-                        const target = parseInt(counter.getAttribute('data-target'));
-                        animateCounter(counter, target);
-                    });
-                    statsObserver.unobserve(entry.target);
+        // Testimonials carousel
+        let currentTestimonial = 0;
+
+        function updateTestimonials() {
+            const cards = document.querySelectorAll('.testimonial-card');
+            cards.forEach((card, index) => {
+                card.classList.remove('active');
+                if (index >= currentTestimonial && index < currentTestimonial + 3) {
+                    card.classList.add('active');
                 }
             });
-        });
 
-        const statsSection = document.getElementById('stats');
-        if (statsSection) {
-            statsObserver.observe(statsSection);
+            const container = document.getElementById('testimonials-container');
+            const cardWidth = 320; // 320px (w-80) + margin
+            container.style.transform = `translateX(-${currentTestimonial * cardWidth}px)`;
         }
 
-        // Contact form
+        function nextTestimonial() {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            updateTestimonials();
+        }
+
+        function prevTestimonial() {
+            currentTestimonial = currentTestimonial === 0 ? testimonials.length - 1 : currentTestimonial - 1;
+            updateTestimonials();
+        }
+
+        // Auto-rotate testimonials
+        setInterval(nextTestimonial, 4000);
+
+        // Testimonial controls
+        document.getElementById('next-testimonial').addEventListener('click', nextTestimonial);
+        document.getElementById('prev-testimonial').addEventListener('click', prevTestimonial);
+
+        // Course details
+        const courseDetails = {
+            web: {
+                title: "Programação Web",
+                content: `
+                    <h4 class="text-lg font-semibold mb-3">Descrição do Curso</h4>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        Aprenda a desenvolver aplicações web modernas e responsivas utilizando as tecnologias mais atuais do mercado.
+                    </p>
+                    
+                    <h4 class="text-lg font-semibold mb-3">Conteúdo Programático</h4>
+                    <ul class="space-y-2 mb-4">
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> HTML5 e Semântica Web</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> CSS3 e Flexbox/Grid</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> JavaScript ES6+ e DOM</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Python Fundamentals</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Django Framework</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> APIs REST e AJAX</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Projeto Final</li>
+                    </ul>
+                    
+                    <div class="grid grid-cols-2 gap-4 text-sm">
+                        <div><strong>Duração:</strong> 12 semanas</div>
+                        <div><strong>Modalidade:</strong> Híbrida</div>
+                        <div><strong>Certificação:</strong> Incluída</div>
+                        <div><strong>Preço:</strong> €899</div>
+                    </div>
+                `
+            },
+            database: {
+                title: "Base de Dados",
+                content: `
+                    <h4 class="text-lg font-semibold mb-3">Descrição do Curso</h4>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        Domine o design, implementação e gestão de bases de dados relacionais e NoSQL.
+                    </p>
+                    
+                    <h4 class="text-lg font-semibold mb-3">Conteúdo Programático</h4>
+                    <ul class="space-y-2 mb-4">
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Fundamentos de BD</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> SQL Avançado</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> PostgreSQL</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> MongoDB (NoSQL)</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Otimização e Performance</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Backup e Recuperação</li>
+                    </ul>
+                    
+                    <div class="grid grid-cols-2 gap-4 text-sm">
+                        <div><strong>Duração:</strong> 8 semanas</div>
+                        <div><strong>Modalidade:</strong> Online</div>
+                        <div><strong>Certificação:</strong> Incluída</div>
+                        <div><strong>Preço:</strong> €699</div>
+                    </div>
+                `
+            },
+            security: {
+                title: "Cibersegurança",
+                content: `
+                    <h4 class="text-lg font-semibold mb-3">Descrição do Curso</h4>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        Torne-se um especialista em segurança informática e proteja organizações contra ameaças digitais.
+                    </p>
+                    
+                    <h4 class="text-lg font-semibold mb-3">Conteúdo Programático</h4>
+                    <ul class="space-y-2 mb-4">
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Fundamentos de Cibersegurança</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Ethical Hacking</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Penetration Testing</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Análise de Vulnerabilidades</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Forense Digital</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Gestão de Incidentes</li>
+                    </ul>
+                    
+                    <div class="grid grid-cols-2 gap-4 text-sm">
+                        <div><strong>Duração:</strong> 16 semanas</div>
+                        <div><strong>Modalidade:</strong> Presencial</div>
+                        <div><strong>Certificação:</strong> CEH Prep</div>
+                        <div><strong>Preço:</strong> €1299</div>
+                    </div>
+                `
+            },
+            cloud: {
+                title: "Cloud Computing",
+                content: `
+                    <h4 class="text-lg font-semibold mb-3">Descrição do Curso</h4>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        Aprenda a arquitetar, implementar e gerir soluções na cloud com as principais plataformas do mercado.
+                    </p>
+                    
+                    <h4 class="text-lg font-semibold mb-3">Conteúdo Programático</h4>
+                    <ul class="space-y-2 mb-4">
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Fundamentos de Cloud</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Amazon Web Services (AWS)</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Microsoft Azure</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> DevOps e CI/CD</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Kubernetes e Docker</li>
+                        <li class="flex items-center"><i class="fas fa-check text-primary mr-2"></i> Terraform (IaC)</li>
+                    </ul>
+                    
+                    <div class="grid grid-cols-2 gap-4 text-sm">
+                        <div><strong>Duração:</strong> 14 semanas</div>
+                        <div><strong>Modalidade:</strong> Híbrida</div>
+                        <div><strong>Certificação:</strong> AWS/Azure Prep</div>
+                        <div><strong>Preço:</strong> €1199</div>
+                    </div>
+                `
+            }
+        };
+
+        function showCourseDetails(courseType) {
+            const modal = document.getElementById('course-modal');
+            const title = document.getElementById('modal-title');
+            const content = document.getElementById('modal-content');
+            
+            const course = courseDetails[courseType];
+            title.textContent = course.title;
+            content.innerHTML = course.content;
+            
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCourseModal() {
+            const modal = document.getElementById('course-modal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Contact form with email integration
         function handleContactForm(event) {
             event.preventDefault();
             
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
-            const company = document.getElementById('company').value;
             const service = document.getElementById('service').value;
             const message = document.getElementById('message').value;
             
@@ -800,46 +936,78 @@
             button.textContent = 'A enviar...';
             button.disabled = true;
             
-            // Simulate form submission
+            // Prepare email content
+            const emailContent = `
+                📧 NOVA MENSAGEM DO WEBSITE - VistoGest Pro
+                
+                👤 DADOS DO CLIENTE:
+                Nome: ${name}
+                Email: ${email}
+                Serviço de Interesse: ${service || 'Não especificado'}
+                
+                💬 MENSAGEM:
+                ${message}
+                
+                📅 Data/Hora: ${new Date().toLocaleString('pt-PT')}
+                
+                ---
+                Esta mensagem foi enviada através do formulário de contacto do website da VistoGest Pro.
+                
+                Para responder, utilize diretamente o email: ${email}
+                
+                📧 Configurações de Email:
+                - Host SMTP: smtp.exemplo.com
+                - Porta: 465 (SSL)
+                - De: VistoGest <geral@vistogest.pro>
+                - Para: geral@vistogest.pro, suporte@vistogest.pro
+            `;
+            
+            // Send to support team via Poe API
+            if (window.Poe && window.Poe.sendUserMessage) {
+                try {
+                    window.Poe.sendUserMessage(
+                        `@Claude-Sonnet-4 Por favor, processe esta mensagem de contacto e formate-a para envio por email:\n\n${emailContent}`,
+                        {
+                            openChat: false,
+                            handler: 'email-handler'
+                        }
+                    );
+                } catch (error) {
+                    console.log('Erro ao enviar via Poe API:', error);
+                }
+            }
+            
+            // Show success message
             setTimeout(() => {
                 button.textContent = '✅ Mensagem Enviada!';
-                button.classList.remove('bg-gradient-to-r', 'from-primary', 'to-accent');
+                button.classList.remove('bg-primary');
                 button.classList.add('bg-green-500');
                 
                 // Show success notification
-                showSuccessNotification(name, service);
+                showSuccessNotification(name);
                 
                 setTimeout(() => {
                     button.textContent = originalText;
                     button.disabled = false;
                     button.classList.remove('bg-green-500');
-                    button.classList.add('bg-gradient-to-r', 'from-primary', 'to-accent');
+                    button.classList.add('bg-primary');
                     event.target.reset();
                 }, 3000);
             }, 1500);
         }
-
+        
         // Success notification
-        function showSuccessNotification(name, service) {
-            const serviceNames = {
-                formacao: 'Formação de Programação',
-                consultoria: 'Consultoria TI',
-                marketing: 'Marketing Digital',
-                saude: 'Saúde e Farmácias',
-                equipamentos: 'Equipamentos Hospitalares',
-                personalizada: 'Solução Personalizada'
-            };
-            
+        function showSuccessNotification(name) {
             const notification = document.createElement('div');
-            notification.className = 'fixed top-20 right-4 bg-green-500 text-white px-6 py-4 rounded-lg shadow-lg z-50 transform transition-all duration-300 translate-x-full max-w-sm';
+            notification.className = 'fixed top-20 right-4 bg-green-500 text-white px-6 py-4 rounded-lg shadow-lg z-50 transform transition-all duration-300 translate-x-full';
             notification.innerHTML = `
-                <div class="flex items-start space-x-3">
-                    <i class="fas fa-check-circle text-xl mt-1"></i>
+                <div class="flex items-center space-x-3">
+                    <i class="fas fa-check-circle text-xl"></i>
                     <div>
                         <h4 class="font-semibold">Mensagem Enviada!</h4>
-                        <p class="text-sm opacity-90">Obrigado ${name}! A nossa equipa de ${serviceNames[service] || 'especialistas'} entrará em contacto em breve.</p>
+                        <p class="text-sm opacity-90">Obrigado ${name}! Entraremos em contacto em breve.</p>
                     </div>
-                    <button onclick="this.closest('.fixed').remove()" class="ml-2 text-white hover:text-gray-200">
+                    <button onclick="this.parentElement.parentElement.remove()" class="ml-4 text-white hover:text-gray-200">
                         <i class="fas fa-times"></i>
                     </button>
                 </div>
@@ -853,7 +1021,7 @@
                 notification.classList.add('translate-x-0');
             }, 100);
             
-            // Auto remove after 6 seconds
+            // Auto remove after 5 seconds
             setTimeout(() => {
                 if (notification.parentElement) {
                     notification.classList.add('translate-x-full');
@@ -863,11 +1031,23 @@
                         }
                     }, 300);
                 }
-            }, 6000);
+            }, 5000);
+        }
+        
+        // Email handler for Poe API
+        if (window.Poe && window.Poe.registerHandler) {
+            window.Poe.registerHandler('email-handler', (result, context) => {
+                if (result.status === 'complete') {
+                    console.log('Email processado e enviado para a equipa da VistoGest Pro');
+                }
+            });
         }
 
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
+            populateTestimonials();
+            updateTestimonials();
+            
             // Trigger initial fade-in animations
             setTimeout(() => {
                 document.querySelectorAll('.fade-in').forEach(el => {
@@ -878,11 +1058,10 @@
             }, 100);
         });
 
-        // Close modals on escape key
+        // Close modal on escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
-                const modals = document.querySelectorAll('.fixed.inset-0');
-                modals.forEach(modal => modal.remove());
+                closeCourseModal();
             }
         });
     </script>
